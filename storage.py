@@ -5,7 +5,8 @@ import itertools
 
 class Storage:
     def __init__(self):
-        self.FILE_NAME = ''
+        #self.path = '..\\___data___\\'
+        self.FILE_NAME = 'persongalleri.p'
         self.today = date.today()
 
     def retrieve(self):
@@ -19,10 +20,11 @@ class Storage:
                 pass
         return data
 
-    def insert(self):
-        line = ''
+    def insert(self, text):
+        line = {'date': self.today, 'text': text}
         with open(self.FILE_NAME, 'ab') as file:
             Pickler(file).dump(line)
+        print(self.retrieve())
         return line
 
     """ 
